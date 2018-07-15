@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Crazy Buttons</title>
+    <style>
+        body { padding: 30px; }
+        .btn-crazy  {
+            position: absolute;
+            top: 30px;
+            left:35%;
+            width:30%;
+            transition: .3s  ease all;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <button class="btn-crazy">Click Me!</button>
+    <button class="btn-crazy">Click Me!</button>
+    <button class="btn-crazy">Click Me!</button>
+    <button class="btn-crazy">Click Me!</button>
+    <button class="btn-crazy">Click Me!</button>
+    <button class="btn-crazy">Click Me!</button>
+    <button class="btn-crazy">Click Me!</button>
+    <button class="btn-crazy">Click Me!</button>
+
+    <script>
+        const crazyBtns = document.querySelectorAll('.btn-crazy');
+        
+        function moveBtnRandom()  {
+            const offsetsLeft = Math.random() * (window.innerWidth - this.clientWidth);
+            const offsetsTop = Math.random() * (window.innerHeight - this.clientHeight);
+
+            console.log(offsetsLeft, offsetsTop);
+
+            this.style.top = `${offsetsTop}px`;
+            this.style.left = `${offsetsLeft}px`;
+        }
+
+        crazyBtns.forEach(button => button.addEventListener('mouseenter', moveBtnRandom));
+    </script>
+</body>
+</html>

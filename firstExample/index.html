@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Calculate example</title>
+    <style>
+        body { padding: 30px; }
+        input { display: block; margin: 0; }
+    </style>
+</head>
+<body>
+    <h2>How much do pies coast?</h2>
+    <form>
+        <div>
+            <lable for="price">Price</lable>
+            <input type="number" name="price" value="20">
+        </div>
+        <div>
+            <lable for="quantity">Quantity <span class="quantity-lable"></span></lable>
+            <input type="range" name="quantity" value="1" min="1" max="20">
+        </div>
+    </form>
+
+    <div class="total"></div>
+    <script>
+        const priceInput    = document.querySelector('[name=price]');
+        const quantityInput = document.querySelector('[name=quantity]');
+        const totalDiv      = document.querySelector('.total');
+        const quantityLable = document.querySelector('.quantity-lable');
+        
+        function calculateTotal() {
+            const price = priceInput.value;
+            const quantity = quantityInput.value;
+            const total = price * quantity;
+
+            totalDiv.innerText = `$${total.toFixed(2)}`;
+        };
+
+        function updateQuantity() {
+            const quantity = quantityInput.value;
+            quantityLable.innerText = quantity;
+        };
+
+        calculateTotal();
+        updateQuantity();
+
+        priceInput.addEventListener('input', calculateTotal);
+        quantityInput.addEventListener('input', calculateTotal);
+        quantityInput.addEventListener('input', updateQuantity);
+
+    </script>
+</body>
+</html>
